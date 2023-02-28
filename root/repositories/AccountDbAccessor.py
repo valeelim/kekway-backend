@@ -7,22 +7,25 @@ from root.modules.accounts.models import UserAccount, UserCloseFriendRelation
 
 class AccountDbAccessor(BaseDbAccessor):
     def edit_biodata(self, user_id, biodata):
-        user = UserAccount.objects.get(id=user_id)
+        try:
+            user = UserAccount.objects.get(id=user_id)
 
-        if biodata.get('email') is not None:
-            user.email = biodata.get('email')
+            if biodata.get('email') is not None:
+                user.email = biodata.get('email')
 
-        if biodata.get('name') is not None:
-            user.name = biodata.get('name')
+            if biodata.get('name') is not None:
+                user.name = biodata.get('name')
 
-        if biodata.get('username') is not None:
-            user.username = biodata.get('username')
+            if biodata.get('username') is not None:
+                user.username = biodata.get('username')
 
-        if biodata.get('bio') is  not None:
-            user.bio = biodata.get('bio')
-        
-        user.save()
-        return user
+            if biodata.get('bio') is  not None:
+                user.bio = biodata.get('bio')
+            
+            user.save()
+            return user
+        except Exception as e:
+            raise e
 
 
     def upload_profile_photo(self, user_id, photo):

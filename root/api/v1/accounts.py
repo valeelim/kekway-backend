@@ -42,7 +42,7 @@ def edit_biodata(request):
             data=serializer.data,
             status=200
         )
-    except UserAccount.DoesNotExist as e:
+    except (UserAccount.DoesNotExist, Exception) as e:
         return JsonResponse(
             data={
                 'message': str(e)
