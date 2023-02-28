@@ -34,7 +34,7 @@ class TweetDbAccessor(BaseDbAccessor):
     def get_user_tweets(self, user_id, target_id):
         if user_id == target_id or \
             UserCloseFriendRelation.objects.filter(friender=target_id, friended=user_id).exists():
-            return Tweet.objects.filter(owner=target_id)
+            return Tweet.objects.filter(owner=target_id).order_by('-created_at')
         return Tweet.objects.filter(Q(owner=target_id) & Q(close_only=False)).order_by('-created_at')
 
 
