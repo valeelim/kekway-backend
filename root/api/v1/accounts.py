@@ -33,6 +33,20 @@ def logout(request):
 
 @api_view(["POST"])
 @permission_classes([IsAuthenticated])
+def edit_background_picture(request):
+    photo = request.data.get('photo')
+    user_id = utils.get_user_id_by_request(request)
+    account_service.edit_background_picture(user_id, photo)
+    return JsonResponse(
+        data={
+            'message': 'Background photo successfully changed'
+        },
+        status=200
+    )
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def edit_biodata(request):
     user_id = utils.get_user_id_by_request(request)
     try:
@@ -91,7 +105,6 @@ def get_user_by_username(request, username):
 @permission_classes([IsAuthenticated])
 def upload_profile_photo(request):
     photo = request.data.get('photo')
-    print(photo)
     user_id = utils.get_user_id_by_request(request)
     account_service.upload_profile_photo(user_id, photo)
     return JsonResponse(

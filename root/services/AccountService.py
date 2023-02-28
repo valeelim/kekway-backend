@@ -24,6 +24,9 @@ class AccountService:
     def get_users_by_substring(self, filter):
         return self.db_accessor.get_users_by_substring(filter);
 
+    def edit_background_picture(self, user_id, photo):
+        self.db_accessor.edit_background_picture(user_id, photo);
+
     # KINDA BAD
     def get_close_friend(self, user_id):
         relations = self.db_accessor.get_close_friend(user_id)

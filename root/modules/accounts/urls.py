@@ -7,6 +7,7 @@ urlpatterns = [
     path('me/', accounts.me),
     path('edit-biodata/', accounts.edit_biodata),
     path('upload-profile-photo/', accounts.upload_profile_photo),
+    path('edit-background-picture/', accounts.edit_background_picture),
 
     path('make-close-friend/', accounts.make_close_friend),
     path('get-close-friend/', accounts.get_close_friend),

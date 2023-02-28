@@ -55,6 +55,14 @@ class AccountDbAccessor(BaseDbAccessor):
             Q(username__icontains=filter) | Q(name__icontains=filter))
         return users
 
+    
+    def edit_background_picture(self, user_id, photo):
+        user = UserAccount.objects.get(id=user_id)
+        res = uploader.upload(photo, folder='/tweet')
+        user.background_photo = res.get('public_id')
+
+        user.save()
+
 
     def make_close_friend(self, friender_id, friended_id):
         if friended_id == friender_id:
