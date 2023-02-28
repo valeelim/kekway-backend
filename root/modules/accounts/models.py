@@ -56,6 +56,7 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=100)
     username = models.CharField(max_length=255, unique=True, db_index=True)
     profile_photo = CloudinaryField('image', null=True, blank=True)
+    bio = models.TextField(default='Your bio here', blank=True, null=False)
     role = models.CharField(max_length=15, choices=Role.choices, default='Member', db_index=True)
 
     is_staff = models.BooleanField(default=False)

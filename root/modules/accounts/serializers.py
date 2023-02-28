@@ -14,7 +14,7 @@ class UserPermissionSerializer(serializers.ModelSerializer):
 class UserCreateSerializer(UserCreateSerializer):
     class Meta(UserCreateSerializer.Meta):
         model = User
-        fields = ('id', 'email', 'name', 'username', 'role', 'password', )
+        fields = ('id', 'email', 'name', 'username', 'bio', 'role', 'password', )
 
 
 class UserSerializer(UserSerializer):
@@ -22,7 +22,7 @@ class UserSerializer(UserSerializer):
 
     class Meta(UserSerializer.Meta):
         model = User
-        fields = ('id', 'email', 'name', 'username', 'role', 'user_permissions', 'profile_photo', )
+        fields = ('id', 'email', 'name', 'username', 'bio', 'role', 'user_permissions', 'profile_photo', )
 
 
 class UserOnlyIdAndNameAndUsername(UserSerializer):
