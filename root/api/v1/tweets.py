@@ -16,7 +16,7 @@ import root.modules.accounts.utils as utils
 @permission_classes([IsAuthenticated])
 def create_tweet(request):
     tweet_dict = request.data
-    if tweet_dict.get('desc') is None:
+    if not tweet_dict.get('desc'):
         return JsonResponse(
             data={
                 'message': 'Tweet must have a description'
