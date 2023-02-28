@@ -17,6 +17,9 @@ class AccountDbAccessor(BaseDbAccessor):
 
         if biodata.get('username') is not None:
             user.username = biodata.get('username')
+
+        if biodata.get('bio') is  not None:
+            user.bio = biodata.get('bio')
         
         user.save()
         return user
